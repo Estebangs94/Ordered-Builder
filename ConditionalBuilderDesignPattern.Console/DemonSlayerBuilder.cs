@@ -9,8 +9,6 @@ namespace ConditionalBuilderDesignPattern
     {
         private readonly List<OrderedAction<DemonSlayer>> _builderActions;
 
-        private const string WithNameMethodName = "<WithName>b__0";
-
         private DemonSlayerBuilder()
         {
             _builderActions = new List<OrderedAction<DemonSlayer>>();
@@ -30,41 +28,48 @@ namespace ConditionalBuilderDesignPattern
             return demonSlayer;
         }
 
-        public DemonSlayerBuilder WithName(string name, int order)
+        public DemonSlayerBuilder WithName(string name)
         {
-            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => slayer.Name = name, order));
+            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => 
+                slayer.Name = name, GetOrderFromEnum(ExecutionOrder.WithName)));
 
             return this;
         }       
 
-        public DemonSlayerBuilder WithRank(Ranks rank, int order)
+        public DemonSlayerBuilder WithRank(Ranks rank)
         {
-            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => slayer.Rank = Ranks.Hashira, order));
+            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => 
+                slayer.Rank = rank, GetOrderFromEnum(ExecutionOrder.WithRank)));
 
             return this;
         }
 
-        public DemonSlayerBuilder WithLevel(int level, int order)
+        public DemonSlayerBuilder WithLevel(int level)
         {
-            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => slayer.Level = 10, order));
+            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => 
+                slayer.Level = level, GetOrderFromEnum(ExecutionOrder.WithLevel)));
 
             return this;
         }
 
-        public DemonSlayerBuilder WithKatanas(int katanas, int order)
+        public DemonSlayerBuilder WithKatanas(int katanas)
         {
-            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => slayer.Katanas = katanas, order));
+            _builderActions.Add(new OrderedAction<DemonSlayer>(slayer => 
+                slayer.Katanas = katanas, GetOrderFromEnum(ExecutionOrder.WithKatanas)));
 
             return this;
         }
 
-        public DemonSlayerBuilder WithEntries(int key, string valor, int order)
+        public DemonSlayerBuilder WithEntries(int key, string valor)
         {
             _builderActions.Add(new OrderedAction<DemonSlayer>(slayer =>
-                slayer.Entries.Add(key, valor), order));
+                slayer.Entries.Add(key, valor), GetOrderFromEnum(ExecutionOrder.WithEntries)));
 
             return this;
         }
+
+        private int GetOrderFromEnum(ExecutionOrder order)
+            => (int)order;
 
     }
 }

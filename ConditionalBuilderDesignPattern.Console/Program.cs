@@ -13,13 +13,13 @@ namespace ConditionalBuilderDesignPattern
             Console.WriteLine("Hello World!");
 
             var builder = DemonSlayerBuilder.CreateBuilder()
-                .WithName("Sparqui", 7)
-                .WithLevel(10, 1)
-                .WithKatanas(2, 4)
-                .WithRank(Ranks.Hashira, 2)
-                .WithEntries(3, "valor3", 3)
-                .WithEntries(1, "valor1",1)
-                .WithEntries(2, "valor2",2);
+                .WithName("Sparqui")
+                .WithLevel(10)
+                .WithKatanas(2)
+                .WithRank(Ranks.Hashira)
+                .WithEntries(3, "valor3")
+                .WithEntries(1, "valor1")
+                .WithEntries(2, "valor2");
 
             var demonSlayer = builder.Build();
 
