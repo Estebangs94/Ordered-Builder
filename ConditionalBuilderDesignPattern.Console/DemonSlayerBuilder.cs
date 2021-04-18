@@ -21,9 +21,12 @@ namespace ConditionalBuilderDesignPattern
         {
             var demonSlayer = new DemonSlayer();
 
-            var orderedActions = _builderActions.OrderBy(e => e.Order).ToList();
+            var orderedActions = _builderActions
+                .OrderBy(e => e.Order)
+                .Select(e => e.Action)
+                .ToList();
 
-            orderedActions.ForEach(e => e.Action(demonSlayer));
+            orderedActions.ForEach(action => action(demonSlayer));
 
             return demonSlayer;
         }
