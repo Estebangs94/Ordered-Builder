@@ -3,8 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>ConditionalBuilderDesignPattern</RootNamespace>
-    <AssemblyName>ConditionalBuilderDesignPattern</AssemblyName>
+    <RootNamespace>OrderedBuilderDesignPattern</RootNamespace>
+    <AssemblyName>OrderedBuilderDesignPattern</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
